@@ -10,10 +10,10 @@ apt-get install imagemagick wget unzip git nodejs npm cockpit
 printf "Configuring MySQL for MediaWiki\n\n"
 mysql_secure_installation
 
-printf "Enter the following commands"
-printf "CREATE DATABASE WikiDB;"
-printf "GRANT ALL PRIVILEGES ON WikiDB.* TO wiki@'localhost' IDENTIFIED BY '<password>';\n\n"
-mysql -u root -p
+echo "Enter a new password for wiki@localhost on MySQL"
+read wiki_pass
+mysql -u root -p -e "CREATE DATABASE WikiDB;"
+mysql -u root -p -e "GRANT ALL PRIVILEGES ON WikiDB.* TO wiki@localhost IDENTIFIED BY '$wiki_pass';"
 
 printf "Configuring MediaWiki\n\n"
 cd /var/www/html/
