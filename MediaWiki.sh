@@ -46,4 +46,4 @@ chmod 777 parsoid.service
 chown root:root parsoid.service
 systemctl daemon-reload
 systemctl enable parsoid
-system start parsoid
+systemctl start parsoid
