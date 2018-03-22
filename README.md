@@ -7,6 +7,7 @@
 ## Versions
 
 * MediaWiki 1.27.1 LTS
+  * Upgrade 1.27.4 LTS
 * Parsoid 0.5.1 for 1.27
 
 ## Install
@@ -29,6 +30,18 @@
     $wgVirtualRestConfig['modules']['parsoid']['url'] = "http://ParsoidURL:8142";
     ```
   * Upload LocalSettings.php to /var/www/html/WikiName using Webmin
+
+## Update
+
+Important: you should backup your MySQL database first
+
+Important: you should backup /var/www/html/WikiName first
+
+* Update MediaWiki-on-Ubuntu:
+  * `wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/update.sh`
+  * `sudo sh update.sh`
+* Update LocalSettings.php
+  * Change `$wgMainCacheType=CACHE_NONE` to `$wgMainCacheType=CACHE_ACCEL` if necessary
 
 ## Notes
 
