@@ -33,9 +33,7 @@
 
 ## Update
 
-Important: you should backup your MySQL database first
-
-Important: you should backup /var/www/html/WikiName first
+**Important:** Use Webmin to backup MySQL WikiDB and /var/www/html/WikiName first
 
 * Update MediaWiki-on-Ubuntu:
   * `wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/update.sh`
