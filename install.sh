@@ -72,6 +72,8 @@ dpkg --install webmin_1.881_all.deb
 # dpkg might complain about dependencies,
 # so fix them and finish installation
 apt-get -f install
+rm webmin_1.881_all.deb
+rmdir /temp
 
 echo "Configure MediaWiki using your web browser"
 echo "Use Webmin (http://yourIP:10000) to place LocalSettings.php in /var/www/html/$WIKI"
