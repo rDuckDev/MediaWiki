@@ -4,6 +4,11 @@
 
 * [Ubuntu Server 16.04.4 LTS](https://www.ubuntu.com/download/server)
 
+## Versions
+
+* MediaWiki 1.27.1 LTS
+* Parsoid 0.5.1 for 1.27
+
 ## Install
 
 * Install Ubuntu Server 16.04.4 LTS
