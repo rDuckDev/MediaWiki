@@ -1,11 +1,5 @@
 #!/bin/bash
 
-echo "Installing LAMP"
-apt-get install apache2 libapache2-mod-php mysql-server php php-apcu php-cli php-curl php-intl php-mbstring php-mysql php-xml
-
-echo "Installing required software"
-apt-get install imagemagick wget zip unzip git nodejs npm
-
 echo "Installing MediaWiki"
 read -p "Enter the name of your wiki: " WIKI
 cd /var/www/html/
@@ -28,17 +22,37 @@ unzip RevisionSlider.zip
 rm RevisionSlider.zip
 
 echo "Creating MySQL database for MediaWiki"
-read -p "[MySQL][root] Password: " MySQL_ROOT
-read -p "What would you like to name your MediaWiki database? " MySQL_DB
-mysql -u root -p$MySQL_ROOT -e "CREATE DATABASE $MySQL_DB;"
+read -p "What would you like to name the database? " MySQL_DB
+while true
+do
+	read -p "MySQL password: " MySQL_ROOT
+	read -p "Confirm password: " CONFIRM
 
-echo "Creating MySQL user for MediaWiki"
-read -p "Username: " MySQL_USER
-read -p "Password: " MySQL_PASS
-mysql -u root -p$MySQL_ROOT -e "GRANT ALL PRIVILEGES ON $MySQL_DB.* TO $MySQL_USER@localhost IDENTIFIED BY '$MySQL_PASS';"
+	if [ "$CONFIRM" = "$MySQL_ROOT" ]
+	then
+		mysql -u root -p$MySQL_ROOT -e "CREATE DATABASE $MySQL_DB;"
 
-echo "Securing MySQL"
-mysql_secure_installation
+		echo "Creating a new MySQL user for MediaWiki"
+		read -p "Username: " MySQL_USER
+		while true
+		do
+			read -p "Password: " MySQL_PASS
+			read -p "Confirm: " CONFIRM
+
+			if [ "$CONFIRM" = "$MySQL_PASS" ]
+			then
+				mysql -u root -p$MySQL_ROOT -e "GRANT ALL PRIVILEGES ON $MySQL_DB.* TO $MySQL_USER@localhost IDENTIFIED BY '$MySQL_PASS';"
+				break
+			else
+				echo "Passwords did not match"
+			fi
+		done
+
+		break
+	else
+		echo "Passwords did not match"
+	fi
+done
 
 echo "Installing Parsoid"
 cd /usr/bin/
@@ -47,11 +61,7 @@ cd parsoid
 npm install
 
 echo "You must configure the Parsoid uri"
-echo "IP address:"
-ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/'
-echo "Wiki name:"
-echo $WIKI
-read -p "Press enter to continue..." BURN
+read -p "Press enter to open the config file for editing..." BURN
 cp localsettings.js.example localsettings.js
 vi localsettings.js
 
@@ -64,19 +74,6 @@ systemctl daemon-reload
 systemctl enable parsoid
 systemctl start parsoid
 
-echo "Installing Webmin"
-mkdir /temp
-cd /temp
-wget http://prdownloads.sourceforge.net/webadmin/webmin_1.881_all.deb
-dpkg --install webmin_1.881_all.deb
-# dpkg might complain about dependencies,
-# so fix them and finish installation
-apt-get -f install
-rm webmin_1.881_all.deb
-rmdir /temp
-
-echo "Configure MediaWiki using your web browser"
-echo "Use Webmin (http://yourIP:10000) to place LocalSettings.php in /var/www/html/$WIKI"
-
 echo "Finished!"
+
 read -p "Press enter to continue..." BURN
