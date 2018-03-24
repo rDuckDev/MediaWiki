@@ -61,3 +61,5 @@
     * [Cockpit](http://cockpit-project.org/)
     * [Webmin](https://doxfer.webmin.com/Webmin/Main_Page)
     * [OpenSSH](http://www.openssh.com/)
+* Useful links
+  * [MediaWiki maintenance](https://doc.wikimedia.org/mediawiki-core/master/php/group__Maintenance.html)
