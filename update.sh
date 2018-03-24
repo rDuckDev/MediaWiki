@@ -10,7 +10,7 @@ echo "Updating MediaWiki"
 cd /var/www/html/
 wget https://releases.wikimedia.org/mediawiki/1.27/mediawiki-1.27.4.tar.gz
 tar -xvzf mediawiki-1.27.4.tar.gz
-rm mediawiki-1.27.4.tar.gz
+rm -f mediawiki-1.27.4.tar.gz
 cp -R -f mediawiki-1.27.4/* $WIKI
 rm -rf mediawiki-1.27.4
 chown -R www-data:www-data $WIKI
