@@ -21,15 +21,13 @@ case $OPTION in
 		apt-get install cockpit
 		;;
 	2 ) echo "Installing Webmin"
-		mkdir /temp
-		cd /temp
+		cd /tmp
 		wget http://prdownloads.sourceforge.net/webadmin/webmin_1.881_all.deb
 		dpkg --install webmin_1.881_all.deb
 		# dpkg might complain about dependencies,
 		# so fix them and finish installation
 		apt-get -f install
 		rm webmin_1.881_all.deb
-		rmdir /temp
 		;;
 	3 ) echo "Installing SSH"
 		apt-get install openssh-server
