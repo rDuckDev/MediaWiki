@@ -55,7 +55,7 @@ do
 done
 
 echo "Installing Parsoid"
-cd /usr/bin/
+cd /usr/lib/
 git clone https://github.com/wikimedia/parsoid.git -b v0.5.1
 cd parsoid
 npm install
