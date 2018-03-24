@@ -41,7 +41,7 @@ do
 
 			if [ "$CONFIRM" = "$MySQL_PASS" ]
 			then
-				mysql -u root -p$MySQL_ROOT -e "GRANT ALL PRIVILEGES ON $MySQL_DB.* TO $MySQL_USER@localhost IDENTIFIED BY '$MySQL_PASS';"
+				mysql -u root -p$MySQL_ROOT -e "GRANT ALL PRIVILEGES ON $MySQL_DB.* TO '$MySQL_USER'@localhost IDENTIFIED BY '$MySQL_PASS';"
 				break
 			else
 				echo "Passwords did not match"
