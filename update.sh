@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "Please take a backup of /var/www/html/WikiName and your MySQL database first!"
 read -p "Enter the name of your wiki: " WIKI
 
 echo "Clearing pending jobs"
