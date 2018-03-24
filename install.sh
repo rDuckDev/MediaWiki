@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Installing MediaWiki"
+echo "Installing MediaWiki LTS"
 read -p "Enter the name of your wiki: " WIKI
 cd /var/www/html/
 wget https://releases.wikimedia.org/mediawiki/1.27/mediawiki-1.27.1.tar.gz
