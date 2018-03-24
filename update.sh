@@ -5,7 +5,7 @@ read -p "Enter the name of your wiki: " WIKI
 
 echo "Clearing pending jobs"
 cd /var/www/html/$WIKI/maintenance
-php runJobs.php
+php runJobs.php --quiet --nothrottle
 
 echo "Updating MediaWiki"
 cd /var/www/html/
