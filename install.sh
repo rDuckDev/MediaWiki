@@ -1,14 +1,14 @@
 #!/bin/bash
 
 echo "Installing MediaWiki LTS"
-read -p "Enter the name of your wiki: " WIKI_NAME
+read -p "Enter the name of your wiki: " WIKI
 cd /var/www/html/
 wget https://releases.wikimedia.org/mediawiki/1.27/mediawiki-1.27.1.tar.gz
 tar -xvzf mediawiki-1.27.1.tar.gz
 rm mediawiki-1.27.1.tar.gz
-mv mediawiki-1.27.1 $WIKI_NAME
-chown -R www-data:www-data $WIKI_NAME
-cd $WIKI_NAME
+mv mediawiki-1.27.1 $WIKI
+chown -R www-data:www-data $WIKI
+cd $WIKI
 
 echo "Installing MediaWiki extensions"
 cd extensions
@@ -21,7 +21,8 @@ wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/RevisionSlider.z
 unzip RevisionSlider.zip
 rm RevisionSlider.zip
 
-echo "Creating MySQL database '$WIKI_NAME' for MediaWiki"
+echo "Creating MySQL database for MediaWiki"
+read -p "What would you like to name the database? " MySQL_DB
 while true
 do
 	read -p "MySQL password: " MySQL_ROOT
@@ -29,41 +30,23 @@ do
 
 	if [ "$CONFIRM" = "$MySQL_ROOT" ]
 	then
-		mysql -u root -p$MySQL_ROOT -e "CREATE DATABASE $WIKI_NAME;"
+		mysql -u root -p$MySQL_ROOT -e "CREATE DATABASE $MySQL_DB;"
 
-		echo "Creating a MySQL sysop for MediaWiki"
+		echo "Creating a new MySQL user for MediaWiki"
+		read -p "Username: " MySQL_USER
 		while true
 		do
-			echo "Username: wiki-sysop"
 			read -p "Password: " MySQL_PASS
 			read -p "Confirm: " CONFIRM
 
 			if [ "$CONFIRM" = "$MySQL_PASS" ]
 			then
-				mysql -u root -p$MySQL_ROOT -e "GRANT ALL PRIVILEGES ON $WIKI_NAME.* TO 'wiki-sysop'@localhost IDENTIFIED BY '$MySQL_PASS';"
+				mysql -u root -p$MySQL_ROOT -e "GRANT ALL PRIVILEGES ON $MySQL_DB.* TO '$MySQL_USER'@localhost IDENTIFIED BY '$MySQL_PASS';"
 				break
 			else
 				echo "Passwords did not match"
 			fi
 		done
-
-		echo "Creating a MySQL user for MediaWiki"
-		while true
-		do
-			echo "Username: wiki"
-			read -p "Password: " MySQL_PASS
-			read -p "Confirm: " CONFIRM
-
-			if [ "$CONFIRM" = "$MySQL_PASS" ]
-			then
-				mysql -u root -p$MySQL_ROOT -e "GRANT SELECT, INSERT, UPDATE, DELETE ON $WIKI_NAME.* TO 'wiki'@localhost IDENTIFIED BY '$MySQL_PASS';"
-				break
-			else
-				echo "Passwords did not match"
-			fi
-		done
-
-		mysql -u root -p$MySQL_ROOT -e "FLUSH PRIVILEGES;"
 
 		break
 	else
