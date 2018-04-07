@@ -3,10 +3,10 @@
 echo "Installing MediaWiki LTS"
 read -p "Enter the name of your wiki: " WIKI
 cd /var/www/html/
-wget https://releases.wikimedia.org/mediawiki/1.27/mediawiki-1.27.1.tar.gz
-tar -xvzf mediawiki-1.27.1.tar.gz
-rm mediawiki-1.27.1.tar.gz
-mv mediawiki-1.27.1 $WIKI
+wget https://releases.wikimedia.org/mediawiki/1.27/mediawiki-1.27.4.tar.gz
+tar -xvzf mediawiki-1.27.4.tar.gz
+rm mediawiki-1.27.4.tar.gz
+mv mediawiki-1.27.4 $WIKI
 chown -R www-data:www-data $WIKI
 cd $WIKI
 
@@ -56,6 +56,7 @@ done
 
 echo "Installing Parsoid"
 cd /usr/lib/
+# Parsoid 0.5.1 was the last version to work with MW 1.27 branch
 git clone https://github.com/wikimedia/parsoid.git -b v0.5.1
 cd parsoid
 npm install
