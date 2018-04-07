@@ -68,6 +68,11 @@ echo "Updating MediaWiki"
 cd new_$WIKI_NAME/maintenance
 php update.php
 
+echo "Switching to the new wiki"
+cd /var/www/html/
+mv $WIKI_NAME old_$WIKI_NAME
+mv new_$WIKI_NAME $WIKI_NAME
+
 echo "Fixing file permissions"
 chown -R www-data:www-data $WIKI_NAME
 
