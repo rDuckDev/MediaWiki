@@ -29,6 +29,41 @@ wget https://releases.wikimedia.org/mediawiki/1.27/mediawiki-1.27.4.tar.gz
 tar -xvzf mediawiki-1.27.4.tar.gz
 rm -f mediawiki-1.27.4.tar.gz
 mv mediawiki-1.27.4 new_$WIKI_NAME
+
+echo "Checking for persistent files"
+PERSIST="persist.txt"
+if [ ! -f $PERSIST ]
+then
+	echo "./LocalSettings.php" > $PERSIST
+	echo "./images" >> $PERSIST
+	echo "./extensions/VisualEditor" >> $PERSIST
+	echo "./extensions/RevisionSlider" >> $PERSIST
+	echo " "
+	echo "Opening the list of files which will persist through the update"
+	echo "Please add any files or directories which are not already listed"
+	read -p "Press enter to edit the file..." BURN
+	vi $PERSIST
+fi
+
+echo "Moving persistent files"
+while read -r LINE
+do
+	# if the directory already exists, then the replacing directory
+	# will actually nest itself inside the existing directory
+	if [ -d ./new_$WIKI_NAME/$LINE ]
+	then
+		rm -rf ./new_$WIKI_NAME/$LINE
+	fi
+	# files were sometimes behaving like directories if they didn't have an extension,
+	# so they're removed as well
+	if [ -f ./new_$WIKI_NAME/$LINE ]
+	then
+		rm -rf ./new_$WIKI_NAME/$LINE
+	fi
+	
+	cp -fR ./$WIKI_NAME/$LINE ./new_$WIKI_NAME/$LINE
+done < $PERSIST
+
 echo "Updating MediaWiki"
 cd new_$WIKI_NAME/maintenance
 php update.php
