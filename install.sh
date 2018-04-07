@@ -13,13 +13,13 @@ cd $WIKI
 echo "Installing MediaWiki extensions"
 cd extensions
 # VisualEditor https://www.mediawiki.org/wiki/Extension:VisualEditor
-wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/VisualEditor.zip
-unzip VisualEditor.zip
-rm VisualEditor.zip
+wget https://extdist.wmflabs.org/dist/extensions/VisualEditor-REL1_27-9da5996.tar.gz
+tar -xvzf VisualEditor-REL1_27-9da5996.tar.gz
+rm VisualEditor-REL1_27-9da5996.tar.gz
 # RevisionSlider https://www.mediawiki.org/wiki/Extension:RevisionSlider
-wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/RevisionSlider.zip
-unzip RevisionSlider.zip
-rm RevisionSlider.zip
+wget https://extdist.wmflabs.org/dist/extensions/RevisionSlider-REL1_27-c980a0c.tar.gz
+tar -xvzf RevisionSlider-REL1_27-c980a0c.tar.gz
+rm RevisionSlider-REL1_27-c980a0c.tar.gz
 
 echo "Creating MySQL database for MediaWiki"
 read -p "What would you like to name the database? " MySQL_DB
