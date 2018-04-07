@@ -56,7 +56,7 @@ vi localsettings.js
 echo "Registering the Parsoid service"
 cd /etc/systemd/system
 wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/parsoid.service
-chmod 777 parsoid.service
+chmod 740 parsoid.service
 chown root:root parsoid.service
 systemctl daemon-reload
 systemctl enable parsoid
