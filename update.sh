@@ -28,9 +28,9 @@ cd /var/www/html/
 wget https://releases.wikimedia.org/mediawiki/1.27/mediawiki-1.27.4.tar.gz
 tar -xvzf mediawiki-1.27.4.tar.gz
 rm -f mediawiki-1.27.4.tar.gz
-cp -R -f mediawiki-1.27.4/* $WIKI_NAME
-rm -rf mediawiki-1.27.4
-cd $WIKI_NAME/maintenance
+mv mediawiki-1.27.4 new_$WIKI_NAME
+echo "Updating MediaWiki"
+cd new_$WIKI_NAME/maintenance
 php update.php
 
 echo "Fixing file permissions"
