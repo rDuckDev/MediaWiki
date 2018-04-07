@@ -22,7 +22,6 @@ tar -xvzf RevisionSlider-REL1_27-c980a0c.tar.gz
 rm RevisionSlider-REL1_27-c980a0c.tar.gz
 
 echo "Creating MySQL database for MediaWiki"
-read -p "What would you like to name the database? " WIKI_NAME
 SYSOPPASS=`pwgen -cnyB1 12`
 USERPASS=`pwgen -cnyB1 8`
 while true
