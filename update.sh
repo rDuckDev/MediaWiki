@@ -1,11 +1,27 @@
 #!/bin/bash
 
-echo "Please take a backup of /var/www/html/WikiName and your MySQL database first!"
 read -p "Enter the name of your wiki: " WIKI_NAME
 
 echo "Clearing pending jobs"
 cd /var/www/html/$WIKI_NAME/maintenance
 php runJobs.php --quiet --nothrottle
+
+echo "Backing up MySQL database"
+while true
+do
+	read -p "MySQL password for user root: " MySQL_ROOT
+	read -p "Confirm password for user root: " CONFIRM
+
+	if [ "$CONFIRM" = "$MySQL_ROOT" ]
+	then
+		rm $WIKI_NAME.sql # remove SQL dump if old one exists
+		mysqldump --user=root --password=$MySQL_ROOT $WIKI_NAME > /var/www/html/$WIKI_NAME.sql
+
+		break
+	else
+		echo "Passwords did not match"
+	fi
+done
 
 echo "Updating MediaWiki"
 cd /var/www/html/
