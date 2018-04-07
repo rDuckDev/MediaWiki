@@ -47,11 +47,7 @@ cd /usr/lib/
 git clone https://github.com/wikimedia/parsoid.git -b v0.5.1
 cd parsoid
 npm install
-
-echo "You must configure the Parsoid uri"
-read -p "Press enter to open the config file for editing..." BURN
 cp localsettings.js.example localsettings.js
-vi localsettings.js
 
 echo "Registering the Parsoid service"
 cd /etc/systemd/system
