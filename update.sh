@@ -23,7 +23,7 @@ do
 	fi
 done
 
-echo "Updating MediaWiki"
+echo "Downloading MediaWiki"
 cd /var/www/html/
 wget https://releases.wikimedia.org/mediawiki/1.27/mediawiki-1.27.4.tar.gz
 tar -xvzf mediawiki-1.27.4.tar.gz
