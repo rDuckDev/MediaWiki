@@ -4,7 +4,7 @@ echo "Installing LAMP"
 apt-get install apache2 libapache2-mod-php mysql-server php php-apcu php-cli php-curl php-intl php-mbstring php-mysql php-xml
 
 echo "Installing required software"
-apt-get install imagemagick wget zip unzip git nodejs npm
+apt-get install imagemagick wget zip unzip git nodejs npm pwgen
 
 echo "Securing MySQL"
 mysql_secure_installation
