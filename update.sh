@@ -30,8 +30,10 @@ tar -xvzf mediawiki-1.27.4.tar.gz
 rm -f mediawiki-1.27.4.tar.gz
 cp -R -f mediawiki-1.27.4/* $WIKI_NAME
 rm -rf mediawiki-1.27.4
-chown -R www-data:www-data $WIKI_NAME
 cd $WIKI_NAME/maintenance
 php update.php
+
+echo "Fixing file permissions"
+chown -R www-data:www-data $WIKI_NAME
 
 echo "Finished!"
