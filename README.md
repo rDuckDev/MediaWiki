@@ -27,8 +27,13 @@
   * `sudo sh isntall.sh`
   * Note: Parsoid defaults to port 8000, but 8142 is recommended
 * Configure MediaWiki using your browser
-  * Download LocalSettings.php and add the following lines:
+  * Download LocalSettings.php and add / update the following lines:
     ```php
+    ## Database settings
+    $wgDBuser = "wiki"
+    $wgDBpassword = "<output from README>"
+    $wgDBadminuser = "wiki-sysop"
+    $wgDBadminpassword = "<output from README>"
     # Configure VisualEditor
     $wgDefaultUserOptions['visualeditor-enable'] = 1;
     $wgDefaultUserOptions['usebetatoolbar'] = 1;

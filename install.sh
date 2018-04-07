@@ -58,6 +58,30 @@ systemctl daemon-reload
 systemctl enable parsoid
 systemctl start parsoid
 
+# print config options
+LOGFILE="/var/www/html/README"
+IP_ADDR=`ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/'`
+
+echo `date` > $LOGFILE
+echo " " >> $LOGFILE
+echo "Parsoid configuration: /usr/lib/parsoid/localsettings.js" >> $LOGFILE
+echo "MediaWiki API: http://$IP_ADDR/$WIKI_NAME/api.php" >> $LOGFILE
+echo " " >> $LOGFILE
+echo "Open your browser to http://$IP_ADDR/$WIKI_NAME to configure MediaWiki" >> $LOGFILE
+echo " " >> $LOGFILE
+echo "Database host: localhost" >> $LOGFILE
+echo "Database name: $WIKI_NAME" >> $LOGFILE
+echo "Database user: wiki-sysop" >> $LOGFILE
+echo "Database pass: $SYSOPPASS" >> $LOGFILE
+echo "Wiki name: $WIKI_NAME" >> $LOGFILE
+echo " " >> $LOGFILE
+echo "Add the following settings to LocalSettings.php" >> $LOGFILE
+echo "wgDBuser: wiki" >> $LOGFILE
+echo "wgDBpassword: $USERPASS" >> $LOGFILE
+echo "wgDBadminuser: wiki-sysop" >> $LOGFILE
+echo "wgDBadminpassword: $SYSOPPASS" >> $LOGFILE
+
+echo "Check $LOGFILE for installation details."
 echo "Finished!"
 
 read -p "Press enter to continue..." BURN
