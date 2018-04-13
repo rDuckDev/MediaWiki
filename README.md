@@ -34,6 +34,8 @@
     $wgDBpassword = "<output from README>"
     $wgDBadminuser = "wiki-sysop"
     $wgDBadminpassword = "<output from README>"
+    # Configure MultimediaViewer
+    $wgDefaultUserOptions['multimediaviewer-enable'] = 1;
     # Configure VisualEditor
     $wgDefaultUserOptions['visualeditor-enable'] = 1;
     $wgDefaultUserOptions['usebetatoolbar'] = 1;

@@ -38,6 +38,7 @@ then
 	echo "./images" >> $PERSIST
 	echo "./extensions/VisualEditor" >> $PERSIST
 	echo "./extensions/RevisionSlider" >> $PERSIST
+	echo "./extensions/MultimediaViewer" >> $PERSIST
 	echo " "
 	echo "Opening the list of files which will persist through the update"
 	echo "Please add any files or directories which are not already listed"

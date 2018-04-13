@@ -20,6 +20,10 @@ rm VisualEditor-REL1_27-9da5996.tar.gz
 wget https://extdist.wmflabs.org/dist/extensions/RevisionSlider-REL1_27-c980a0c.tar.gz
 tar -xvzf RevisionSlider-REL1_27-c980a0c.tar.gz
 rm RevisionSlider-REL1_27-c980a0c.tar.gz
+# MultimediaViewer https://www.mediawiki.org/wiki/Extension:MultimediaViewer
+wget https://extdist.wmflabs.org/dist/extensions/MultimediaViewer-REL1_27-15e42f9.tar.gz
+tar -xvzf MultimediaViewer-REL1_27-15e42f9.tar.gz
+rm MultimediaViewer-REL1_27-15e42f9.tar.gz
 
 echo "Creating MySQL database for MediaWiki"
 SYSOPPASS=`pwgen -cnyB1 12`
