@@ -24,12 +24,11 @@ do
 done
 
 echo "Downloading MediaWiki"
-cd /var/www/html
-git clone https://github.com/wikimedia/mediawiki.git --branch REL1_27 --depth 1 new_$WIKI_NAME
-cd new_$WIKI_NAME
-rm -rf mw-config
-git submodule update --init
-composer update --no-dev
+cd /var/www/html/
+wget https://releases.wikimedia.org/mediawiki/1.27/mediawiki-1.27.4.tar.gz
+tar -xvzf mediawiki-1.27.4.tar.gz
+rm mediawiki-1.27.4.tar.gz
+mv mediawiki-1.27.4 new_$WIKI_NAME
 
 echo "Downloading MediaWiki extensions"
 # VisualEditor https://www.mediawiki.org/wiki/Extension:VisualEditor

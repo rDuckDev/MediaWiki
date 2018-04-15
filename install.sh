@@ -2,11 +2,11 @@
 
 echo "Installing MediaWiki"
 read -p "Enter the name of your wiki: " WIKI_NAME
-cd /var/www/html
-git clone https://github.com/wikimedia/mediawiki.git --branch REL1_27 --depth 1 $WIKI_NAME
-cd $WIKI_NAME
-git submodule update --init
-composer update --no-dev
+cd /var/www/html/
+wget https://releases.wikimedia.org/mediawiki/1.27/mediawiki-1.27.4.tar.gz
+tar -xvzf mediawiki-1.27.4.tar.gz
+rm mediawiki-1.27.4.tar.gz
+mv mediawiki-1.27.4 $WIKI_NAME
 
 echo "Installing MediaWiki extensions"
 # VisualEditor https://www.mediawiki.org/wiki/Extension:VisualEditor
