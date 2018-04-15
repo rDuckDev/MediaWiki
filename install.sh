@@ -32,8 +32,8 @@ find /var/www/html/$WIKI_NAME -type d -exec chmod 750 {} \;
 find /var/www/html/$WIKI_NAME -type f -exec chmod 640 {} \;
 
 echo "Creating MySQL database for MediaWiki"
-SYSOPPASS=`pwgen -cnyB1 12`
-USERPASS=`pwgen -cnyB1 8`
+SYSOPPASS=`pwgen -syncB1 12`
+USERPASS=`pwgen -syncB1 8`
 while true
 do
 	read -p "MySQL password for user root: " MySQL_ROOT
