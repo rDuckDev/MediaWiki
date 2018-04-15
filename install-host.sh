@@ -4,7 +4,10 @@ echo "Installing LAMP"
 apt-get install apache2 libapache2-mod-php mysql-server php php-apcu php-cli php-curl php-intl php-mbstring php-mysql php-xml
 
 echo "Installing required software"
+cd /tmp
 apt-get install imagemagick wget zip unzip git nodejs npm pwgen
+wget https://getcomposer.org/installer
+php installer --filename=composer --install-dir=bin
 
 echo "Securing MySQL"
 mysql_secure_installation

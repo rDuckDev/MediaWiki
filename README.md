@@ -64,9 +64,11 @@
   * Git
   * Node.js
   * NPM
+  * Composer
   * Remote admin (one)
     * [Cockpit](http://cockpit-project.org/)
     * [Webmin](https://doxfer.webmin.com/Webmin/Main_Page)
     * [OpenSSH](http://www.openssh.com/)
 * Useful links
   * [MediaWiki maintenance](https://doc.wikimedia.org/mediawiki-core/master/php/group__Maintenance.html)
+  * [PHP security tips](https://www.cyberciti.biz/tips/php-security-best-practices-tutorial.html)
