@@ -2,28 +2,34 @@
 
 echo "Installing MediaWiki"
 read -p "Enter the name of your wiki: " WIKI_NAME
-cd /var/www/html/
-wget https://releases.wikimedia.org/mediawiki/1.27/mediawiki-1.27.4.tar.gz
-tar -xvzf mediawiki-1.27.4.tar.gz
-rm mediawiki-1.27.4.tar.gz
-mv mediawiki-1.27.4 $WIKI_NAME
-chown -R www-data:www-data $WIKI_NAME
+cd /var/www/html
+git clone https://github.com/wikimedia/mediawiki.git --branch REL1_27 --depth 1 $WIKI_NAME
 cd $WIKI_NAME
+git submodule update --init
+composer update --no-dev
 
 echo "Installing MediaWiki extensions"
-cd extensions
 # VisualEditor https://www.mediawiki.org/wiki/Extension:VisualEditor
-wget https://extdist.wmflabs.org/dist/extensions/VisualEditor-REL1_27-9da5996.tar.gz
-tar -xvzf VisualEditor-REL1_27-9da5996.tar.gz
-rm VisualEditor-REL1_27-9da5996.tar.gz
+cd /var/www/html/$WIKI_NAME/extensions
+git clone https://github.com/wikimedia/mediawiki-extensions-VisualEditor.git --branch REL1_27 --depth 1 VisualEditor
+cd VisualEditor
+git submodule update --init
 # RevisionSlider https://www.mediawiki.org/wiki/Extension:RevisionSlider
-wget https://extdist.wmflabs.org/dist/extensions/RevisionSlider-REL1_27-c980a0c.tar.gz
-tar -xvzf RevisionSlider-REL1_27-c980a0c.tar.gz
-rm RevisionSlider-REL1_27-c980a0c.tar.gz
+cd /var/www/html/$WIKI_NAME/extensions
+git clone https://github.com/wikimedia/mediawiki-extensions-RevisionSlider.git --branch REL1_27 --depth 1 RevisionSlider
+cd RevisionSlider
+composer install --no-dev
+npm install
 # MultimediaViewer https://www.mediawiki.org/wiki/Extension:MultimediaViewer
-wget https://extdist.wmflabs.org/dist/extensions/MultimediaViewer-REL1_27-15e42f9.tar.gz
-tar -xvzf MultimediaViewer-REL1_27-15e42f9.tar.gz
-rm MultimediaViewer-REL1_27-15e42f9.tar.gz
+cd /var/www/html/$WIKI_NAME/extensions
+git clone https://github.com/wikimedia/mediawiki-extensions-MultimediaViewer.git --branch REL1_27 --depth 1 MultimediaViewer
+
+echo "Fixing file permissions"
+chown -R root:www-data /var/www/html/$WIKI_NAME
+chown -R www-data:www-data /var/www/html/$WIKI_NAME/cache
+chown -R www-data:www-data /var/www/html/$WIKI_NAME/images
+find /var/www/html/$WIKI_NAME -type d -exec chmod 750 {} \;
+find /var/www/html/$WIKI_NAME -type f -exec chmod 640 {} \;
 
 echo "Creating MySQL database for MediaWiki"
 SYSOPPASS=`pwgen -cnyB1 12`

@@ -24,21 +24,35 @@ do
 done
 
 echo "Downloading MediaWiki"
-cd /var/www/html/
-wget https://releases.wikimedia.org/mediawiki/1.27/mediawiki-1.27.4.tar.gz
-tar -xvzf mediawiki-1.27.4.tar.gz
-rm -f mediawiki-1.27.4.tar.gz
-mv mediawiki-1.27.4 new_$WIKI_NAME
+cd /var/www/html
+git clone https://github.com/wikimedia/mediawiki.git --branch REL1_27 --depth 1 new_$WIKI_NAME
+cd new_$WIKI_NAME
+git submodule update --init
+composer update --no-dev
+
+echo "Downloading MediaWiki extensions"
+# VisualEditor https://www.mediawiki.org/wiki/Extension:VisualEditor
+cd /var/www/html/new_$WIKI_NAME/extensions
+git clone https://github.com/wikimedia/mediawiki-extensions-VisualEditor.git --branch REL1_27 --depth 1 VisualEditor
+cd VisualEditor
+git submodule update --init
+# RevisionSlider https://www.mediawiki.org/wiki/Extension:RevisionSlider
+cd /var/www/html/new_$WIKI_NAME/extensions
+git clone https://github.com/wikimedia/mediawiki-extensions-RevisionSlider.git --branch REL1_27 --depth 1 RevisionSlider
+cd RevisionSlider
+composer install --no-dev
+npm install
+# MultimediaViewer https://www.mediawiki.org/wiki/Extension:MultimediaViewer
+cd /var/www/html/new_$WIKI_NAME/extensions
+git clone https://github.com/wikimedia/mediawiki-extensions-MultimediaViewer.git --branch REL1_27 --depth 1 MultimediaViewer
 
 echo "Checking for persistent files"
+cd /var/www/html
 PERSIST="persist.txt"
 if [ ! -f $PERSIST ]
 then
 	echo "./LocalSettings.php" > $PERSIST
 	echo "./images" >> $PERSIST
-	echo "./extensions/VisualEditor" >> $PERSIST
-	echo "./extensions/RevisionSlider" >> $PERSIST
-	echo "./extensions/MultimediaViewer" >> $PERSIST
 	echo " "
 	echo "Opening the list of files which will persist through the update"
 	echo "Please add any files or directories which are not already listed"
@@ -47,6 +61,7 @@ then
 fi
 
 echo "Moving persistent files"
+cd /var/www/html
 while read -r LINE
 do
 	# if the directory already exists, then the replacing directory
@@ -65,16 +80,20 @@ do
 	cp -fR ./$WIKI_NAME/$LINE ./new_$WIKI_NAME/$LINE
 done < $PERSIST
 
-echo "Updating MediaWiki"
-cd new_$WIKI_NAME/maintenance
-php update.php
-
 echo "Switching to the new wiki"
 cd /var/www/html/
 mv $WIKI_NAME old_$WIKI_NAME
 mv new_$WIKI_NAME $WIKI_NAME
 
 echo "Fixing file permissions"
-chown -R www-data:www-data $WIKI_NAME
+chown -R root:www-data /var/www/html/$WIKI_NAME
+chown -R www-data:www-data /var/www/html/$WIKI_NAME/cache
+chown -R www-data:www-data /var/www/html/$WIKI_NAME/images
+find /var/www/html/$WIKI_NAME -type d -exec chmod 750 {} \;
+find /var/www/html/$WIKI_NAME -type f -exec chmod 640 {} \;
+
+echo "Updating MediaWiki"
+cd /var/www/html/$WIKI_NAME/maintenance
+php update.php
 
 echo "Finished!"
