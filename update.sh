@@ -27,6 +27,7 @@ echo "Downloading MediaWiki"
 cd /var/www/html
 git clone https://github.com/wikimedia/mediawiki.git --branch REL1_27 --depth 1 new_$WIKI_NAME
 cd new_$WIKI_NAME
+rm -rf mw-config
 git submodule update --init
 composer update --no-dev
 
