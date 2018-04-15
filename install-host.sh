@@ -7,7 +7,7 @@ echo "Installing required software"
 cd /tmp
 apt-get install imagemagick wget zip unzip git nodejs npm pwgen
 wget https://getcomposer.org/installer
-php installer --filename=composer --install-dir=bin
+php installer --filename=composer --install-dir=/bin
 
 echo "Securing MySQL"
 mysql_secure_installation
