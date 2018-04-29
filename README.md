@@ -10,6 +10,10 @@
   * Upgrade 1.27.4 LTS
 * Parsoid 0.5.1 for 1.27
 
+## Ubuntu 18.04 LTS
+
+Ubuntu 18.04 LTS comes with PHP7.2 by default, so 16.04.4 LTS will remain the recommended OS version until after the MediaWiki 1.31 LTS update releases in June which will [add support for PHP7.2](https://www.mediawiki.org/wiki/Compatibility#PHP).
+
 ## Install-Host.sh
 
 * Install Ubuntu Server 16.04.4 LTS
