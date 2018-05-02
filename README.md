@@ -73,6 +73,9 @@ Ubuntu 18.04 LTS comes with PHP7.2 by default, so 16.04.4 LTS will remain the re
     * [Cockpit](http://cockpit-project.org/)
     * [Webmin](https://doxfer.webmin.com/Webmin/Main_Page)
     * [OpenSSH](http://www.openssh.com/)
+    * GUI (minimal)
+      * Firefox
+      * Gedit
 * Useful links
   * [MediaWiki maintenance](https://doc.wikimedia.org/mediawiki-core/master/php/group__Maintenance.html)
   * [PHP security tips](https://www.cyberciti.biz/tips/php-security-best-practices-tutorial.html)

@@ -16,7 +16,8 @@ echo "How would you like to administer your machine?"
 echo "  1) Cockpit"
 echo "  2) Webmin"
 echo "  3) SSH"
-echo "  4) None"
+echo "  4) GUI"
+echo "  5) None"
 read -p "Option: " OPTION
 
 case $OPTION in
@@ -34,6 +35,10 @@ case $OPTION in
 		;;
 	3 ) echo "Installing SSH"
 		apt-get install openssh-server
+		;;
+	4 ) echo "Installing GUI"
+		apt-get install --no-install-recommends ubuntu-desktop
+		apt-get install firefox gedit
 		;;
 	* ) echo ""
 		;;
