@@ -67,10 +67,10 @@ Ubuntu 18.04 LTS uses PHP7.2 by default, so 16.04.4 LTS will remain the recommen
   * Node.js
   * NPM
   * Composer
-  * Remote admin (one)
+  * Admin (one)
     * [Cockpit](http://cockpit-project.org/)
     * [Webmin](https://doxfer.webmin.com/Webmin/Main_Page)
-    * [OpenSSH](http://www.openssh.com/)
+    * OpenSSH
     * GUI (minimal)
       * Firefox
       * Gedit
