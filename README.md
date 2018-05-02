@@ -34,10 +34,10 @@ Ubuntu 18.04 LTS uses PHP7.2 by default, so 16.04.4 LTS will remain the recommen
   * Download LocalSettings.php and add (or update) the following lines:
     ```php
     ## Database settings
-    $wgDBuser = "wiki"
-    $wgDBpassword = "<output from README>"
-    $wgDBadminuser = "wiki-sysop"
-    $wgDBadminpassword = "<output from README>"
+    $wgDBuser = "wiki";
+    $wgDBpassword = "<output from README>";
+    $wgDBadminuser = "wiki-sysop";
+    $wgDBadminpassword = "<output from README>";
     # Configure MultimediaViewer
     $wgDefaultUserOptions['multimediaviewer-enable'] = 1;
     # Configure VisualEditor
