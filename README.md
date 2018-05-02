@@ -79,3 +79,4 @@ Ubuntu 18.04 LTS comes with PHP7.2 by default, so 16.04.4 LTS will remain the re
 * Useful links
   * [MediaWiki maintenance](https://doc.wikimedia.org/mediawiki-core/master/php/group__Maintenance.html)
   * [PHP security tips](https://www.cyberciti.biz/tips/php-security-best-practices-tutorial.html)
+  * [MySQL performance tips](https://www.percona.com/blog/2014/01/28/10-mysql-performance-tuning-settings-after-installation/)
