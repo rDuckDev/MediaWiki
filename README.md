@@ -2,7 +2,7 @@
 
 ## Requirements
 
-* [Ubuntu Server 16.04.4 LTS](https://www.ubuntu.com/download/server)
+* [Ubuntu Server 16.04.4 LTS](http://releases.ubuntu.com/16.04/)
 
 ## Versions
 
@@ -12,7 +12,7 @@
 
 ## Ubuntu 18.04 LTS
 
-Ubuntu 18.04 LTS comes with PHP7.2 by default, so 16.04.4 LTS will remain the recommended OS version until after the MediaWiki 1.31 LTS update releases in June which will [add support for PHP7.2](https://www.mediawiki.org/wiki/Compatibility#PHP).
+Ubuntu 18.04 LTS uses PHP7.2 by default, so 16.04.4 LTS will remain the recommended OS version until after the MediaWiki 1.31 LTS update releases in June since it will [add support for PHP7.2](https://www.mediawiki.org/wiki/Compatibility#PHP).
 
 ## Install-Host.sh
 
