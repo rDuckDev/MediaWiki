@@ -28,7 +28,7 @@ Ubuntu 18.04 LTS uses PHP7.2 by default, so 16.04.4 LTS will remain the recommen
 
 * Install MediaWiki on Ubuntu:
   * `wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/install.sh`
-  * `sudo sh isntall.sh`
+  * `sudo sh install.sh`
   * Note: Parsoid defaults to port 8000, but 8142 is recommended
 * Configure MediaWiki using your browser
   * Download LocalSettings.php and add / update the following lines:
