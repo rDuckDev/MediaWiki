@@ -55,7 +55,6 @@ Ubuntu 18.04 LTS uses PHP7.2 by default, so 16.04.4 LTS will remain the recommen
   * `wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/update.sh`
   * `sudo sh update.sh`
 * Update LocalSettings.php
-  * Change `$wgMainCacheType=CACHE_NONE` to `$wgMainCacheType=CACHE_ACCEL` if necessary
 
 ## Notes
 
