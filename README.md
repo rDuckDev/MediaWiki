@@ -6,9 +6,8 @@
 
 ## Versions
 
-* MediaWiki 1.27.1 LTS
-  * Upgrade 1.27.4 LTS
-* Parsoid 0.5.1 for 1.27
+* MediaWiki 1.27.4 LTS
+* Parsoid 0.5.1 for REL1_27
 
 ## Ubuntu 18.04 LTS
 
