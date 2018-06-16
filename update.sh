@@ -31,7 +31,6 @@ do
 
 	if [ "$CONFIRM" = "$MySQL_ROOT" ]
 	then
-		rm $WIKI_NAME.sql # remove SQL dump if old one exists
 		mysqldump --user=root --password=$MySQL_ROOT $WIKI_NAME > /var/www/html/$WIKI_NAME.sql
 
 		break
