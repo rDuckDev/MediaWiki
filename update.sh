@@ -13,6 +13,13 @@ cd /var/www/html/$WIKI_NAME/maintenance
 php runJobs.php --quiet --nothrottle
 
 echo "Backing up MySQL database"
+echo -e "${BLU}Making your wiki read-only${NoC}"
+cd /var/www/html/$WIKI_NAME
+cp LocalSettings.php LocalSettings.php.bak
+echo >> LocalSettings.php # make sure $wgReadOnly is on a new line
+echo '$wgReadOnly = "This wiki is currently being upgraded to a newer software version.";' >> LocalSettings.php
+echo
+
 while true
 do
 	read -p "MySQL password for user root: " MySQL_ROOT
@@ -64,6 +71,12 @@ then
 fi
 
 echo "Moving persistent files"
+# this must happen before files are moved,
+# otherwise read-only will persists
+echo -e "${BLU}Disable read-only for your wiki${NoC}"
+cd /var/www/html/$WIKI_NAME
+mv LocalSettings.php.bak LocalSettings.php
+
 cd /var/www/html
 while read -r LINE
 do
