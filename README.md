@@ -48,9 +48,7 @@ Ubuntu 18.04 LTS uses PHP7.2 by default, so 16.04.4 LTS will remain the recommen
     $wgHiddenPrefs[] = 'visualeditor-enable';
     $wgVisualEditorAvailableNamespaces = [
         "User" => true,
-        "Template" => true,
-        "Help" => true,
-        "Category" => true
+        "Help" => true
     ];
     $wgVirtualRestConfig['modules']['parsoid']['url'] = "http://ParsoidURL:8142";
     ```
