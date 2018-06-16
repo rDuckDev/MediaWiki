@@ -37,6 +37,23 @@ do
 done
 
 echo "Downloading MediaWiki"
+echo -e "${BLU}Upgrading Parsoid${NoC}"
+service parsoid stop
+cd /usr/lib/
+cp ./parsoid/localsettings.js /tmp/localsettings.js.bak
+rm -rf parsoid
+git clone https://github.com/wikimedia/parsoid.git --branch v0.9.0 --depth 1 parsoid
+cd parsoid
+npm install
+cp config.example.yaml config.yaml
+mv /tmp/localsettings.js.bak ./localsettings.js.old
+echo -e "${BLU}Opening the new Parsoid configuration for editing${NoC}"
+echo -e "${ORG}The previous settings are saved in /usr/lib/parsoid/localsettings.js.bak${NoC}"
+read -p "Press any key to continue..." -n 1 -r
+echo
+vi config.yaml
+service parsoid start
+
 cd /var/www/html/
 wget https://releases.wikimedia.org/mediawiki/1.31/mediawiki-1.31.0.tar.gz
 tar -xvzf mediawiki-1.31.0.tar.gz
