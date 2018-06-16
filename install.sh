@@ -56,16 +56,15 @@ done
 
 echo "Installing Parsoid"
 cd /usr/lib/
-# Parsoid 0.5.1 was the last version to work with MW 1.27 branch
-git clone https://github.com/wikimedia/parsoid.git -b v0.5.1
+git clone https://github.com/wikimedia/parsoid.git --branch v0.9.0 --depth 1 parsoid
 cd parsoid
 npm install
-cp localsettings.js.example localsettings.js
+cp config.example.yaml config.yaml
 
 echo "Registering the Parsoid service"
 cd /etc/systemd/system
 wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/parsoid.service
-chmod 740 parsoid.service
+chmod 644 parsoid.service
 chown root:root parsoid.service
 systemctl daemon-reload
 systemctl enable parsoid
@@ -77,7 +76,7 @@ IP_ADDR=`ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  
 
 echo `date` > $LOGFILE
 echo " " >> $LOGFILE
-echo "Parsoid configuration: /usr/lib/parsoid/localsettings.js" >> $LOGFILE
+echo "Parsoid configuration: /usr/lib/parsoid/config.yaml" >> $LOGFILE
 echo "MediaWiki API: http://$IP_ADDR/$WIKI_NAME/api.php" >> $LOGFILE
 echo " " >> $LOGFILE
 echo "Open your browser to http://$IP_ADDR/$WIKI_NAME to configure MediaWiki" >> $LOGFILE
