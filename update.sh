@@ -6,13 +6,14 @@ GRN="\033[0;32m"
 ORG="\033[0;33m"
 BLU="\033[0;34m"
 
+echo -e "${BLU}Upgrading MediaWiki${NoC}"
 read -p "Enter the name of your wiki: " WIKI_NAME
+echo
 
-echo "Clearing pending jobs"
+echo -e "${BLU}Clearing pending jobs${NoC}"
 cd /var/www/html/$WIKI_NAME/maintenance
 php runJobs.php --quiet --nothrottle
 
-echo "Backing up MySQL database"
 echo -e "${BLU}Making your wiki read-only${NoC}"
 cd /var/www/html/$WIKI_NAME
 cp LocalSettings.php LocalSettings.php.bak
@@ -20,10 +21,13 @@ echo >> LocalSettings.php # make sure $wgReadOnly is on a new line
 echo '$wgReadOnly = "This wiki is currently being upgraded to a newer software version.";' >> LocalSettings.php
 echo
 
+echo -e "${BLU}Backing up MySQL database${NoC}"
 while true
 do
-	read -p "MySQL password for user root: " MySQL_ROOT
-	read -p "Confirm password for user root: " CONFIRM
+	read -s -p "MySQL password for user root: " MySQL_ROOT
+	echo
+	read -s -p "Confirm password for user root: " CONFIRM
+	echo
 
 	if [ "$CONFIRM" = "$MySQL_ROOT" ]
 	then
@@ -32,11 +36,10 @@ do
 
 		break
 	else
-		echo "Passwords did not match"
+		echo -e "${RED}Passwords did not match${NoC}"
 	fi
 done
 
-echo "Downloading MediaWiki"
 echo -e "${BLU}Upgrading Parsoid${NoC}"
 service parsoid stop
 cd /usr/lib/
@@ -54,46 +57,50 @@ echo
 vi config.yaml
 service parsoid start
 
+echo -e "${BLU}Downloading MediaWiki${NoC}"
 cd /var/www/html/
 wget https://releases.wikimedia.org/mediawiki/1.31/mediawiki-1.31.0.tar.gz
 tar -xvzf mediawiki-1.31.0.tar.gz
 rm mediawiki-1.31.0.tar.gz
 mv mediawiki-1.31.0 new_$WIKI_NAME
 
-echo "Downloading MediaWiki extensions"
+echo -e "${BLU}Installing MediaWiki extensions${NoC}"
 # VisualEditor https://www.mediawiki.org/wiki/Extension:VisualEditor
+echo -e "${BLU}VisualEditor${NoC}"
 cd /var/www/html/new_$WIKI_NAME/extensions
 git clone https://github.com/wikimedia/mediawiki-extensions-VisualEditor.git --branch REL1_31 --depth 1 VisualEditor
 cd VisualEditor
 git submodule update --init
 # RevisionSlider https://www.mediawiki.org/wiki/Extension:RevisionSlider
+echo -e "${BLU}RevisionSlider${NoC}"
 cd /var/www/html/new_$WIKI_NAME/extensions
 git clone https://github.com/wikimedia/mediawiki-extensions-RevisionSlider.git --branch REL1_31 --depth 1 RevisionSlider
 cd RevisionSlider
 composer install --no-dev
 npm install
 
-echo "Checking for persistent files"
+echo -e "${BLU}Checking for persistent files${NoC}"
 cd /var/www/html
 PERSIST="persist.txt"
 if [ ! -f $PERSIST ]
 then
 	echo "./LocalSettings.php" > $PERSIST
 	echo "./images" >> $PERSIST
-	echo " "
-	echo "Opening the list of files which will persist through the update"
-	echo "Please add any files or directories which are not already listed"
-	read -p "Press enter to edit the file..." BURN
+	echo
+	echo -e "${BLU}Opening the list of files which will persist through the update"
+	echo -e "Please add any files or directories which are not already listed${NoC}"
+	read -p "Press any key to continue..." -n 1 -r
+	echo
 	vi $PERSIST
 fi
 
-echo "Moving persistent files"
 # this must happen before files are moved,
 # otherwise read-only will persists
 echo -e "${BLU}Disable read-only for your wiki${NoC}"
 cd /var/www/html/$WIKI_NAME
 mv LocalSettings.php.bak LocalSettings.php
 
+echo -e "${BLU}Moving persistent files${NoC}"
 cd /var/www/html
 while read -r LINE
 do
@@ -113,20 +120,22 @@ do
 	cp -fR ./$WIKI_NAME/$LINE ./new_$WIKI_NAME/$LINE
 done < $PERSIST
 
-echo "Switching to the new wiki"
+echo -e "${BLU}Switching to the new wiki${NoC}"
 cd /var/www/html/
 mv $WIKI_NAME old_$WIKI_NAME
 mv new_$WIKI_NAME $WIKI_NAME
 
-echo "Fixing file permissions"
+echo -e "${BLU}Fixing file permissions${NoC}"
 chown -R root:www-data /var/www/html/$WIKI_NAME
 chown -R www-data:www-data /var/www/html/$WIKI_NAME/cache
 chown -R www-data:www-data /var/www/html/$WIKI_NAME/images
 find /var/www/html/$WIKI_NAME -type d -exec chmod 750 {} \;
 find /var/www/html/$WIKI_NAME -type f -exec chmod 640 {} \;
 
-echo "Updating MediaWiki"
+echo -e "${BLU}Updating MediaWiki${NoC}"
 cd /var/www/html/$WIKI_NAME/maintenance
 php update.php
 
-echo "Finished!"
+echo -e "${GRN}Finished!${NoC}"
+read -p "Press any key to continue..." -n 1 -r
+echo
