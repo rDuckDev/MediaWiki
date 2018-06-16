@@ -50,9 +50,10 @@ case $REPLY in
       apt-get install --no-install-recommends ubuntu-desktop
       apt-get install firefox gedit
       ;;
-  * ) echo -e ""
+  * ) echo
       ;;
 esac
 
 echo -e "${GRN}Finished!${NoC}"
 read -p "Press any key to continue..." -n 1 -r
+echo
