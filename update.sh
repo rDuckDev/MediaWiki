@@ -118,7 +118,7 @@ do
 		rm -rf ./new_$WIKI_NAME/$LINE
 	fi
 	
-	cp -fR ./$WIKI_NAME/$LINE ./new_$WIKI_NAME/$LINE
+	mv -f ./$WIKI_NAME/$LINE ./new_$WIKI_NAME/$LINE
 done < $PERSIST
 
 echo -e "${BLU}Switching to the new wiki${NoC}"
