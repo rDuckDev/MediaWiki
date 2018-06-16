@@ -25,9 +25,6 @@ git clone https://github.com/wikimedia/mediawiki-extensions-RevisionSlider.git -
 cd RevisionSlider
 composer install --no-dev
 npm install
-# MultimediaViewer https://www.mediawiki.org/wiki/Extension:MultimediaViewer
-cd /var/www/html/$WIKI_NAME/extensions
-git clone https://github.com/wikimedia/mediawiki-extensions-MultimediaViewer.git --branch REL1_27 --depth 1 MultimediaViewer
 
 echo "Fixing file permissions"
 chown -R root:www-data /var/www/html/$WIKI_NAME
