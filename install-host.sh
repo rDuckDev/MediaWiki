@@ -8,10 +8,12 @@ BLU="\033[0;34m"
 
 echo -e "${BLU}Installing LAMP stack${NoC}"
 read -p "Press any key to continue..." -n 1 -r
+echo
 apt-get install apache2 libapache2-mod-php mysql-server php php-apcu php-cli php-curl php-intl php-mbstring php-mysql php-xml
 
 echo -e "${BLU}Installing required software${NoC}"
 read -p "Press any key to continue..." -n 1 -r
+echo
 cd /tmp
 apt-get install imagemagick wget zip unzip git nodejs npm pwgen
 wget https://getcomposer.org/installer
@@ -19,6 +21,7 @@ php installer --filename=composer --install-dir=/bin
 
 echo -e "${BLU}Securing MySQL${NoC}"
 read -p "Press any key to continue..." -n 1 -r
+echo
 mysql_secure_installation
 
 echo -e "${BLU}How would you like to administer your machine?"
