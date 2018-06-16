@@ -46,6 +46,12 @@ Ubuntu 18.04 LTS uses PHP7.2 by default, so 16.04.4 LTS will remain the recommen
     $wgVisualEditorEnableWikitext = true;
     $wgDefaultUserOptions['visualeditor-enable'] = 1;
     $wgHiddenPrefs[] = 'visualeditor-enable';
+    $wgVisualEditorAvailableNamespaces = [
+        "User" => true,
+        "Template" => true,
+        "Help" => true,
+        "Category" => true
+    ];
     $wgVirtualRestConfig['modules']['parsoid']['url'] = "http://ParsoidURL:8142";
     ```
   * Upload LocalSettings.php to /var/www/html/WikiName
