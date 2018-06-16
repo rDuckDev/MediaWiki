@@ -1,5 +1,10 @@
 #!/bin/bash
 
+NoC="\033[0m"
+RED="\033[0;31m"
+ORG="\033[0;33m"
+GRN="\033[0;32m"
+
 read -p "Enter the name of your wiki: " WIKI_NAME
 
 echo "Clearing pending jobs"
