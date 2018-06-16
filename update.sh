@@ -93,6 +93,8 @@ then
 	vi $PERSIST
 fi
 
+echo -e "${ORG}Stopping apache${NoC}"
+service apache2 stop
 # this must happen before files are moved,
 # otherwise read-only will persists
 echo -e "${BLU}Disable read-only for your wiki${NoC}"
@@ -134,6 +136,9 @@ find /var/www/html/$WIKI_NAME -type f -exec chmod 640 {} \;
 echo -e "${BLU}Updating MediaWiki${NoC}"
 cd /var/www/html/$WIKI_NAME/maintenance
 php update.php
+
+echo -e "${ORG}Starting apache${NoC}"
+service apache2 start
 
 echo -e "${GRN}Finished!${NoC}"
 read -p "Press any key to continue..." -n 1 -r
