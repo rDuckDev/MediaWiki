@@ -77,7 +77,7 @@ vi config.yaml
 
 echo -e "${BLU}Registering the Parsoid service${NoC}"
 cd /etc/systemd/system
-wget https://raw.githubusercontent.com/rDuckDev/MediaWiki-on-Ubuntu/REL1_31/parsoid.service
+wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/parsoid.service
 chmod 644 parsoid.service
 chown root:root parsoid.service
 systemctl daemon-reload

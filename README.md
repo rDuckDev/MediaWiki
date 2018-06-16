@@ -20,13 +20,13 @@ Ubuntu 18.04 LTS uses PHP7.2 by default, so 16.04.4 LTS will remain the recommen
 * Update Ubuntu: `sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade`
 * Install wget: `sudo apt-get install wget`
 * Install LAMP, required software and admin tools
-  * `wget https://raw.githubusercontent.com/rDuckDev/MediaWiki-on-Ubuntu/REL1_31/install-host.sh`
+  * `wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/install-host.sh`
   * `sudo bash install-host.sh`
 
 ## Install.sh
 
 * Install MediaWiki on Ubuntu:
-  * `wget https://raw.githubusercontent.com/rDuckDev/MediaWiki-on-Ubuntu/REL1_31/install.sh`
+  * `wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/install.sh`
   * `sudo bash install.sh`
   * Note: Parsoid defaults to port 8000, but 8142 is recommended on Ubuntu / Debian
 * Configure MediaWiki using your browser
@@ -57,7 +57,7 @@ Ubuntu 18.04 LTS uses PHP7.2 by default, so 16.04.4 LTS will remain the recommen
 ## Update.sh
 
 * Update MediaWiki-on-Ubuntu:
-  * `wget https://raw.githubusercontent.com/rDuckDev/MediaWiki-on-Ubuntu/REL1_31/update.sh`
+  * `wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/update.sh`
   * `sudo bash update.sh`
 * Update LocalSettings.php
 
