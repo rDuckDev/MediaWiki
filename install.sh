@@ -102,12 +102,13 @@ echo "Database pass: $SYSOPPASS" >> $LOGFILE
 echo "Wiki name: $WIKI_NAME" >> $LOGFILE
 echo " " >> $LOGFILE
 echo "Add the following settings to LocalSettings.php" >> $LOGFILE
-echo "wgDBuser: wiki" >> $LOGFILE
-echo "wgDBpassword: $USERPASS" >> $LOGFILE
-echo "wgDBadminuser: wiki-sysop" >> $LOGFILE
-echo "wgDBadminpassword: $SYSOPPASS" >> $LOGFILE
+echo '$wgDBuser = "wiki";' >> $LOGFILE
+echo '$wgDBpassword = "'$USERPASS'";' >> $LOGFILE
+echo '$wgDBadminuser = "wiki-sysop";' >> $LOGFILE
+echo '$wgDBadminpassword = "'$SYSOPPASS'";' >> $LOGFILE
 
 echo -e "${ORG}The following was saved to $LOGFILE.${NoC}"
+echo
 cat /var/www/html/README
 echo
 
