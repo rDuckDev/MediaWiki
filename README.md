@@ -39,11 +39,12 @@ Ubuntu 18.04 LTS uses PHP7.2 by default, so 16.04.4 LTS will remain the recommen
     $wgDBadminpassword = "<output from README>";
     # Configure MultimediaViewer
     $wgDefaultUserOptions['multimediaviewer-enable'] = 1;
+    # Configure WikiEditor and CodeEditor
+    $wgDefaultUserOptions['usebetatoolbar'] = 1;
     # Configure VisualEditor
     $wgVisualEditorEnableDiffPage = true;
     $wgVisualEditorEnableWikitext = true;
     $wgDefaultUserOptions['visualeditor-enable'] = 1;
-    $wgDefaultUserOptions['usebetatoolbar'] = 1;
     $wgHiddenPrefs[] = 'visualeditor-enable';
     $wgVirtualRestConfig['modules']['parsoid']['url'] = "http://ParsoidURL:8142";
     ```
