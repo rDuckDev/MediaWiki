@@ -31,20 +31,20 @@ done
 
 echo "Downloading MediaWiki"
 cd /var/www/html/
-wget https://releases.wikimedia.org/mediawiki/1.27/mediawiki-1.27.4.tar.gz
-tar -xvzf mediawiki-1.27.4.tar.gz
-rm mediawiki-1.27.4.tar.gz
-mv mediawiki-1.27.4 new_$WIKI_NAME
+wget https://releases.wikimedia.org/mediawiki/1.31/mediawiki-1.31.0.tar.gz
+tar -xvzf mediawiki-1.31.0.tar.gz
+rm mediawiki-1.31.0.tar.gz
+mv mediawiki-1.31.0 new_$WIKI_NAME
 
 echo "Downloading MediaWiki extensions"
 # VisualEditor https://www.mediawiki.org/wiki/Extension:VisualEditor
 cd /var/www/html/new_$WIKI_NAME/extensions
-git clone https://github.com/wikimedia/mediawiki-extensions-VisualEditor.git --branch REL1_27 --depth 1 VisualEditor
+git clone https://github.com/wikimedia/mediawiki-extensions-VisualEditor.git --branch REL1_31 --depth 1 VisualEditor
 cd VisualEditor
 git submodule update --init
 # RevisionSlider https://www.mediawiki.org/wiki/Extension:RevisionSlider
 cd /var/www/html/new_$WIKI_NAME/extensions
-git clone https://github.com/wikimedia/mediawiki-extensions-RevisionSlider.git --branch REL1_27 --depth 1 RevisionSlider
+git clone https://github.com/wikimedia/mediawiki-extensions-RevisionSlider.git --branch REL1_31 --depth 1 RevisionSlider
 cd RevisionSlider
 composer install --no-dev
 npm install
