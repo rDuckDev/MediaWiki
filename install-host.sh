@@ -2,8 +2,9 @@
 
 NoC="\033[0m"
 RED="\033[0;31m"
-ORG="\033[0;33m"
 GRN="\033[0;32m"
+ORG="\033[0;33m"
+BLU="\033[0;34m"
 
 echo "Installing LAMP"
 apt-get install apache2 libapache2-mod-php mysql-server php php-apcu php-cli php-curl php-intl php-mbstring php-mysql php-xml
