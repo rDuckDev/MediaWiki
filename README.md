@@ -6,8 +6,8 @@
 
 ## Versions
 
-* MediaWiki 1.27.4 LTS
-* Parsoid 0.5.1 for REL1_27
+* MediaWiki 1.31.0 LTS
+* Parsoid 0.9.0 for REL1_31
 
 ## Ubuntu 18.04 LTS
 
@@ -17,18 +17,18 @@ Ubuntu 18.04 LTS uses PHP7.2 by default, so 16.04.4 LTS will remain the recommen
 
 * Install Ubuntu Server 16.04.4 LTS
   * Do not install "LAMP server"
-* Update Ubuntu: `sudo apt-get update && sudo apt-get upgrade`
+* Update Ubuntu: `sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade`
 * Install wget: `sudo apt-get install wget`
 * Install LAMP, required software and admin tools
-  * `wget https://raw.githubusercontent.com/rDuckDev/MediaWiki-on-Ubuntu/REL1_27/install-host.sh`
+  * `wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/install-host.sh`
   * `sudo sh install-host.sh`
 
 ## Install.sh
 
 * Install MediaWiki on Ubuntu:
-  * `wget https://raw.githubusercontent.com/rDuckDev/MediaWiki-on-Ubuntu/REL1_27/install.sh`
+  * `wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/install.sh`
   * `sudo sh install.sh`
-  * Note: Parsoid defaults to port 8000, but 8142 is recommended
+  * Note: Parsoid defaults to port 8000, but 8142 is recommended on Ubuntu / Debian
 * Configure MediaWiki using your browser
   * Download LocalSettings.php and add (or update) the following lines:
     ```php
@@ -40,6 +40,7 @@ Ubuntu 18.04 LTS uses PHP7.2 by default, so 16.04.4 LTS will remain the recommen
     # Configure MultimediaViewer
     $wgDefaultUserOptions['multimediaviewer-enable'] = 1;
     # Configure VisualEditor
+    $wgVisualEditorEnableDiffPage = true;
     $wgDefaultUserOptions['visualeditor-enable'] = 1;
     $wgDefaultUserOptions['usebetatoolbar'] = 1;
     $wgHiddenPrefs[] = 'visualeditor-enable';
@@ -49,10 +50,8 @@ Ubuntu 18.04 LTS uses PHP7.2 by default, so 16.04.4 LTS will remain the recommen
 
 ## Update.sh
 
-**Important:** Backup your MySQL wiki DB and /var/www/html/WikiName first
-
 * Update MediaWiki-on-Ubuntu:
-  * `wget https://raw.githubusercontent.com/rDuckDev/MediaWiki-on-Ubuntu/REL1_27/update.sh`
+  * `wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/update.sh`
   * `sudo sh update.sh`
 * Update LocalSettings.php
 

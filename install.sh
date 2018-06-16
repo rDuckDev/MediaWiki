@@ -63,7 +63,7 @@ cp localsettings.js.example localsettings.js
 
 echo "Registering the Parsoid service"
 cd /etc/systemd/system
-wget https://raw.githubusercontent.com/rDuckDev/MediaWiki-on-Ubuntu/REL1_27/parsoid.service
+wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/parsoid.service
 chmod 740 parsoid.service
 chown root:root parsoid.service
 systemctl daemon-reload
