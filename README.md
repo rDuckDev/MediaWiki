@@ -11,7 +11,7 @@
 
 ## Install-Host.sh
 
-* Install Ubuntu Server 16.04.4 LTS
+* Install Ubuntu Server
   * Do not install "LAMP server"
 * Update Ubuntu: `sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade`
 * Install wget: `sudo apt-get install wget`
