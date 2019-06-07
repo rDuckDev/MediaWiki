@@ -1,8 +1,8 @@
-# MediaWiki on Ubuntu
 
 ## Requirements
 
 * [Ubuntu Server 16.04.4 LTS](http://releases.ubuntu.com/16.04/)
+# MediaWiki KMS
 
 ## Versions
 
