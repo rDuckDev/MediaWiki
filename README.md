@@ -19,7 +19,7 @@
 ## Install.sh
 
 * Install MediaWiki on Ubuntu:
-  * `wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/install.sh`
+  * `wget https://github.com/rDuckDev/MediaWiki-KMS/raw/master/install.sh`
   * `sudo bash install.sh`
   * Note: Parsoid defaults to port 8000, but 8142 is recommended on Ubuntu / Debian
 * Configure MediaWiki using your browser
@@ -49,8 +49,8 @@
 
 ## Update.sh
 
-* Update MediaWiki-on-Ubuntu:
-  * `wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/update.sh`
+* Update MediaWiki-KMS:
+  * `wget https://github.com/rDuckDev/MediaWiki-KMS/raw/master/update.sh`
   * `sudo bash update.sh`
 * Update LocalSettings.php
 
