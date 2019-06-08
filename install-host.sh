@@ -30,7 +30,8 @@ case $REPLY in
 		;;
 	2 ) echo -e "- Installing Webmin"
 		echo
-		wget http://prdownloads.sourceforge.net/webadmin/webmin_1.910_all.deb -O /tmp/webmin.deb
+		wget -c http://prdownloads.sourceforge.net/webadmin/webmin_1.910_all.deb \
+			-q --show-progress -O /tmp/webmin.deb
 		dpkg --install /tmp/webmin.deb
 		# dpkg might complain about dependencies,
 		# so fix them and finish the installation
@@ -52,5 +53,5 @@ esac
 echo -e "- Installation complete"
 echo
 
-read -p "Press any key to continue..." -n 1 -r
+read -p "All done!"
 echo
