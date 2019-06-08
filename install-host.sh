@@ -26,7 +26,7 @@ echo
 case $REPLY in
 	1 ) echo -e "- Installing Cockpit"
 		echo
-		apt-get install cockpit
+		debconf-apt-progress -- apt-get install -y cockpit
 		;;
 	2 ) echo -e "- Installing Webmin"
 		echo
@@ -38,14 +38,14 @@ case $REPLY in
 		apt-get -f install
 		rm webmin_1.910_all.deb
 		;;
-	3 ) echo -e "- Installing SSH"
+	3 ) echo -e "- Installing OpenSSH"
 		echo
-		apt-get install openssh-server
+		debconf-apt-progress -- apt-get install -y openssh-server
 		;;
 	4 ) echo -e "- Installing GUI"
 		echo
-		apt-get install --no-install-recommends ubuntu-desktop
-		apt-get install firefox gedit
+		debconf-apt-progress -- apt-get install -y --no-install-recommends \
+			ubuntu-desktop firefox gedit
 		;;
 	* ) echo
 		;;
