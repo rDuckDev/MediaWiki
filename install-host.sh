@@ -35,7 +35,7 @@ case $REPLY in
 		dpkg --install /tmp/webmin.deb
 		# dpkg might complain about dependencies,
 		# so fix them and finish the installation
-		apt-get -f install
+		apt-get -f install -y
 		;;
 	3 ) echo -e "- Installing OpenSSH"
 		echo
