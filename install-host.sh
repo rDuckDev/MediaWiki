@@ -25,9 +25,11 @@ echo
 
 case $REPLY in
 	1 ) echo -e "- Installing Cockpit"
+		echo
 		apt-get install cockpit
 		;;
 	2 ) echo -e "- Installing Webmin"
+		echo
 		cd /tmp
 		wget http://prdownloads.sourceforge.net/webadmin/webmin_1.910_all.deb
 		dpkg --install webmin_1.910_all.deb
@@ -37,9 +39,11 @@ case $REPLY in
 		rm webmin_1.910_all.deb
 		;;
 	3 ) echo -e "- Installing SSH"
+		echo
 		apt-get install openssh-server
 		;;
 	4 ) echo -e "- Installing GUI"
+		echo
 		apt-get install --no-install-recommends ubuntu-desktop
 		apt-get install firefox gedit
 		;;
@@ -47,6 +51,8 @@ case $REPLY in
 		;;
 esac
 
-echo -e "Finished!"
+echo -e "- Installation complete"
+echo
+
 read -p "Press any key to continue..." -n 1 -r
 echo
