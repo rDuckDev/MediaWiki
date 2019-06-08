@@ -50,8 +50,5 @@ case $REPLY in
 		;;
 esac
 
-echo -e "- Installation complete"
-echo
-
-read -p "All done!"
+echo -e "All done!"
 echo
