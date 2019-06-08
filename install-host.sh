@@ -30,13 +30,11 @@ case $REPLY in
 		;;
 	2 ) echo -e "- Installing Webmin"
 		echo
-		cd /tmp
-		wget http://prdownloads.sourceforge.net/webadmin/webmin_1.910_all.deb
-		dpkg --install webmin_1.910_all.deb
+		wget http://prdownloads.sourceforge.net/webadmin/webmin_1.910_all.deb -O /tmp/webmin.deb
+		dpkg --install /tmp/webmin.deb
 		# dpkg might complain about dependencies,
 		# so fix them and finish the installation
 		apt-get -f install
-		rm webmin_1.910_all.deb
 		;;
 	3 ) echo -e "- Installing OpenSSH"
 		echo
