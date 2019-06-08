@@ -6,15 +6,26 @@
 * MediaWiki 1.31.0 LTS
 * Parsoid 0.9.0 for REL1_31
 
-## Install-Host.sh
+## Installation
 
 * Install Ubuntu Server
   * Do not install "LAMP server"
-* Update Ubuntu: `sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade`
-* Install wget: `sudo apt-get install wget`
-* Install LAMP, required software and admin tools
-  * `wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/install-host.sh`
-  * `sudo bash install-host.sh`
+* Install updates and patches
+  ```bash
+  sudo su
+  apt-get update && apt-get dist-upgrade -y
+  apt-get install wget
+  ```
+
+### install-host
+
+* Install LAMP stack and required software
+  ```bash
+  sudo su
+  cd /tmp
+  wget https://github.com/rDuckDev/MediaWiki-KMS/raw/master/install-host
+  bash install-host
+  ```
 
 ## Install.sh
 
