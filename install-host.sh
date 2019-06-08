@@ -5,11 +5,14 @@
 
 echo -e "- Installing LAMP stack"
 echo
-apt-get install apache2 libapache2-mod-php mysql-server php php-apcu php-cli php-curl php-intl php-mbstring php-mysql php-xml
 
-apt-get install imagemagick wget zip unzip git nodejs npm pwgen
-
+debconf-apt-progress -- apt-get install -y \
+	apache2 libapache2-mod-php \
+	php php-apcu php-cli php-curl php-intl php-mbstring php-mysql php-xml \
+	imagemagick wget zip unzip git nodejs npm pwgen \
+	mysql-server
 mysql_secure_installation
+echo
 
 echo -e "- How would you like to administer your machine?"
 echo -e "  1) Cockpit"
