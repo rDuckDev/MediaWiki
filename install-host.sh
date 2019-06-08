@@ -11,10 +11,7 @@ apt-get install apache2 libapache2-mod-php mysql-server php php-apcu php-cli php
 echo -e "- Installing required software"
 read -p "Press any key to continue..." -n 1 -r
 echo
-cd /tmp
 apt-get install imagemagick wget zip unzip git nodejs npm pwgen
-wget https://getcomposer.org/installer
-php installer --filename=composer --install-dir=/bin
 
 echo -e "- Securing MySQL"
 read -p "Press any key to continue..." -n 1 -r

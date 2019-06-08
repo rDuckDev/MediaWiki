@@ -75,7 +75,7 @@ echo -e "${BLU}RevisionSlider${NoC}"
 cd /var/www/html/new_$WIKI_NAME/extensions
 git clone https://github.com/wikimedia/mediawiki-extensions-RevisionSlider.git --branch REL1_31 --depth 1 RevisionSlider
 cd RevisionSlider
-composer install --no-dev
+composer install --no-dev ## TODO: fix broken dependency
 npm install
 
 echo -e "${BLU}Checking for persistent files${NoC}"
