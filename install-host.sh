@@ -14,10 +14,10 @@ debconf-apt-progress -- apt-get install -y \
 mysql_secure_installation
 echo
 
-echo -e "- How would you like to administer your machine?"
+echo -e "How would you like to administer your machine? [1-5]"
 echo -e "  1) Cockpit"
 echo -e "  2) Webmin"
-echo -e "  3) SSH"
+echo -e "  3) OpenSSH"
 echo -e "  4) GUI"
 echo -e "  5) None"
 read -p "Option: " -n 1 -r
