@@ -3,18 +3,12 @@
 # This script installs the LAMP stack onto Ubuntu,
 # along with several packages required by MediaWiki.
 
-NoC="\033[0m"
-RED="\033[0;31m"
-GRN="\033[0;32m"
-ORG="\033[0;33m"
-BLU="\033[0;34m"
-
-echo -e "${BLU}Installing LAMP stack${NoC}"
+echo -e "- Installing LAMP stack"
 read -p "Press any key to continue..." -n 1 -r
 echo
 apt-get install apache2 libapache2-mod-php mysql-server php php-apcu php-cli php-curl php-intl php-mbstring php-mysql php-xml
 
-echo -e "${BLU}Installing required software${NoC}"
+echo -e "- Installing required software"
 read -p "Press any key to continue..." -n 1 -r
 echo
 cd /tmp
@@ -22,25 +16,25 @@ apt-get install imagemagick wget zip unzip git nodejs npm pwgen
 wget https://getcomposer.org/installer
 php installer --filename=composer --install-dir=/bin
 
-echo -e "${BLU}Securing MySQL${NoC}"
+echo -e "- Securing MySQL"
 read -p "Press any key to continue..." -n 1 -r
 echo
 mysql_secure_installation
 
-echo -e "${BLU}How would you like to administer your machine?"
+echo -e "- How would you like to administer your machine?"
 echo -e "  1) Cockpit"
 echo -e "  2) Webmin"
 echo -e "  3) SSH"
 echo -e "  4) GUI"
-echo -e "  5) None${NoC}"
+echo -e "  5) None"
 read -p "Option: " -n 1 -r
 echo
 
 case $REPLY in
-  1 ) echo -e "${BLU}Installing Cockpit${NoC}"
+  1 ) echo -e "- Installing Cockpit"
       apt-get install cockpit
       ;;
-  2 ) echo -e "${BLU}Installing Webmin${NoC}"
+  2 ) echo -e "- Installing Webmin"
       cd /tmp
       wget http://prdownloads.sourceforge.net/webadmin/webmin_1.881_all.deb
       dpkg --install webmin_1.881_all.deb
@@ -49,10 +43,10 @@ case $REPLY in
       apt-get -f install
       rm webmin_1.881_all.deb
       ;;
-  3 ) echo -e "${BLU}Installing SSH${NoC}"
+  3 ) echo -e "- Installing SSH"
       apt-get install openssh-server
       ;;
-  4 ) echo -e "${BLU}Installing GUI${NoC}"
+  4 ) echo -e "- Installing GUI"
       apt-get install --no-install-recommends ubuntu-desktop
       apt-get install firefox gedit
       ;;
@@ -60,6 +54,6 @@ case $REPLY in
       ;;
 esac
 
-echo -e "${GRN}Finished!${NoC}"
+echo -e "Finished!"
 read -p "Press any key to continue..." -n 1 -r
 echo
