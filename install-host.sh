@@ -50,7 +50,7 @@ case $REPLY in
 esac
 
 echo -e "- Installation complete"
-
+echo
 
 read -p "Press any key to continue..." -n 1 -r
 echo
