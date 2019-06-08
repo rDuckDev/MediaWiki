@@ -1,11 +1,8 @@
-
-## Requirements
-
-* [Ubuntu Server 16.04.4 LTS](http://releases.ubuntu.com/16.04/)
 # MediaWiki KMS
 
 ## Versions
 
+* [Ubuntu Server 18.04.2 LTS](https://www.ubuntu.com/download/server)
 * MediaWiki 1.31.0 LTS
 * Parsoid 0.9.0 for REL1_31
 
