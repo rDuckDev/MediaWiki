@@ -24,27 +24,27 @@ read -p "Option: " -n 1 -r
 echo
 
 case $REPLY in
-  1 ) echo -e "- Installing Cockpit"
-      apt-get install cockpit
-      ;;
-  2 ) echo -e "- Installing Webmin"
-      cd /tmp
-      wget http://prdownloads.sourceforge.net/webadmin/webmin_1.910_all.deb
-      dpkg --install webmin_1.910_all.deb
-      # dpkg might complain about dependencies,
-      # so fix them and finish the installation
-      apt-get -f install
-      rm webmin_1.910_all.deb
-      ;;
-  3 ) echo -e "- Installing SSH"
-      apt-get install openssh-server
-      ;;
-  4 ) echo -e "- Installing GUI"
-      apt-get install --no-install-recommends ubuntu-desktop
-      apt-get install firefox gedit
-      ;;
-  * ) echo
-      ;;
+	1 ) echo -e "- Installing Cockpit"
+		apt-get install cockpit
+		;;
+	2 ) echo -e "- Installing Webmin"
+		cd /tmp
+		wget http://prdownloads.sourceforge.net/webadmin/webmin_1.910_all.deb
+		dpkg --install webmin_1.910_all.deb
+		# dpkg might complain about dependencies,
+		# so fix them and finish the installation
+		apt-get -f install
+		rm webmin_1.910_all.deb
+		;;
+	3 ) echo -e "- Installing SSH"
+		apt-get install openssh-server
+		;;
+	4 ) echo -e "- Installing GUI"
+		apt-get install --no-install-recommends ubuntu-desktop
+		apt-get install firefox gedit
+		;;
+	* ) echo
+		;;
 esac
 
 echo -e "Finished!"
