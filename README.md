@@ -14,15 +14,15 @@
   ```bash
   sudo su
   apt-get update && apt-get dist-upgrade -y
-  apt-get install wget
   ```
 
 ### install-host
 
 * Install LAMP stack and required software
   ```bash
-  sudo su
   cd /tmp
+  sudo su
+  apt-get install wget
   wget https://github.com/rDuckDev/MediaWiki-KMS/raw/master/install-host
   bash install-host
   ```
