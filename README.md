@@ -67,23 +67,25 @@
 
 ## Notes
 
-* What's installed?
-  * Apache
-  * MySQL
-  * PHP
-  * ImageMagick
-  * Git
-  * Node.js
-  * NPM
-  * Composer
-  * Admin (one)
-    * [Cockpit](http://cockpit-project.org/)
-    * [Webmin](https://doxfer.webmin.com/Webmin/Main_Page)
-    * OpenSSH
-    * GUI (minimal)
-      * Firefox
-      * Gedit
-* Useful links
-  * [MediaWiki maintenance](https://doc.wikimedia.org/mediawiki-core/master/php/group__Maintenance.html)
-  * [PHP security tips](https://www.cyberciti.biz/tips/php-security-best-practices-tutorial.html)
-  * [MySQL performance tips](https://www.percona.com/blog/2014/01/28/10-mysql-performance-tuning-settings-after-installation/)
+### Software
+
+* Apache
+* MySQL
+* PHP
+* ImageMagick
+* Git
+* Node.js
+* NPM
+* Admin (one)
+  * [Cockpit](http://cockpit-project.org/)
+  * [Webmin](https://doxfer.webmin.com/Webmin/Main_Page)
+  * OpenSSH
+  * GUI (minimal)
+    * Firefox
+    * gedit
+
+### Useful links
+
+* [MediaWiki maintenance](https://doc.wikimedia.org/mediawiki-core/master/php/group__Maintenance.html)
+* [PHP security tips](https://www.cyberciti.biz/tips/php-security-best-practices-tutorial.html)
+* [MySQL performance tips](https://www.percona.com/blog/2014/01/28/10-mysql-performance-tuning-settings-after-installation/)
