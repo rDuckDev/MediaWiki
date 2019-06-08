@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# This script installs the LAMP stack onto Ubuntu,
+# along with several packages required by MediaWiki.
+
 NoC="\033[0m"
 RED="\033[0;31m"
 GRN="\033[0;32m"
