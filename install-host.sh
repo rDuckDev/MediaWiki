@@ -31,7 +31,7 @@ case $REPLY in
 		;;
 	2 ) echo -e "- Installing Webmin"
 		echo
-		wget -c http://prdownloads.sourceforge.net/webadmin/webmin_1.910_all.deb \
+		wget -c https://prdownloads.sourceforge.net/webadmin/webmin_1.974_all.deb \
 			-q --show-progress -O /tmp/webmin.deb
 		dpkg --install /tmp/webmin.deb
 		# dpkg might complain about dependencies,
