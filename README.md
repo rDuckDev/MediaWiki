@@ -9,26 +9,29 @@ A collection of resources that help to install MediaWiki as a knowledge manageme
 
 ## Installation
 
-* Install Ubuntu Server
-  * Do not install "LAMP server"
+### Ubuntu
+
+* [Install Ubuntu Server](https://ubuntu.com/tutorials/install-ubuntu-server)
+  * Check the **Install OpenSSH server** option, if desired
+  * Leave all **Featured Server Snaps** unchecked (recommended)
 * Install updates and patches
+
   ```bash
   sudo su
   apt-get update && apt-get dist-upgrade -y
+  reboot now
   ```
 
-### install-host
+* Install the LAMP stack and required software
 
-* Install LAMP stack and required software
   ```bash
   cd /tmp
   sudo su
-  apt-get install wget
   wget https://github.com/rDuckDev/MediaWiki-KMS/raw/master/install-host.sh
   bash install-host.sh
   ```
 
-## Install.sh
+### MediaWiki
 
 * Install MediaWiki on Ubuntu:
   * `wget https://github.com/rDuckDev/MediaWiki-KMS/raw/master/install.sh`
