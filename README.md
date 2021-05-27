@@ -74,6 +74,7 @@ A collection of resources that help to install MediaWiki as a knowledge manageme
 ## Notes
 
 * [Parsoid](https://www.mediawiki.org/wiki/Parsoid) (PHP version) is included MediaWiki 1.35+.
+* When using Webmin, set **MySQL configuration file** to `/etc/mysql/mariadb.cnf` in the **MySQL Database Server** module.
 
 ### Software
 
