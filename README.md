@@ -4,9 +4,8 @@ A collection of resources that help to install MediaWiki as a knowledge manageme
 
 ## Versions
 
-* [Ubuntu Server 18.04.2 LTS](https://www.ubuntu.com/download/server)
-* MediaWiki 1.31.0 LTS
-* Parsoid 0.9.0 for REL1_31
+* [Ubuntu Server 20.04 LTS](https://ubuntu.com/download/server)
+* MediaWiki 1.35 LTS
 
 ## Installation
 
