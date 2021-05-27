@@ -1,5 +1,7 @@
 # MediaWiki KMS
 
+A collection of resources that help to install MediaWiki as a knowledge management system (KMS).
+
 ## Versions
 
 * [Ubuntu Server 18.04.2 LTS](https://www.ubuntu.com/download/server)
