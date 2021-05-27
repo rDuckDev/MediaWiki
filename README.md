@@ -24,8 +24,8 @@ A collection of resources that help to install MediaWiki as a knowledge manageme
   cd /tmp
   sudo su
   apt-get install wget
-  wget https://github.com/rDuckDev/MediaWiki-KMS/raw/master/install-host
-  bash install-host
+  wget https://github.com/rDuckDev/MediaWiki-KMS/raw/master/install-host.sh
+  bash install-host.sh
   ```
 
 ## Install.sh
