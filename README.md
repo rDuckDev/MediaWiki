@@ -78,15 +78,14 @@ A collection of resources that help to install MediaWiki as a knowledge manageme
 ### Software
 
 * Apache
-* MySQL
+* MariaDB
 * PHP
+* Ghostscript
 * ImageMagick
-* Git
-* Node.js
-* NPM
+* Poppler
 * Admin (one)
-  * [Cockpit](http://cockpit-project.org/)
-  * [Webmin](https://doxfer.webmin.com/Webmin/Main_Page)
+  * [Cockpit](https://cockpit-project.org/)
+  * [Webmin](https://webmin.com/)
   * OpenSSH
   * GUI (minimal)
     * Firefox
