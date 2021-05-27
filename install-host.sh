@@ -9,7 +9,8 @@ echo
 debconf-apt-progress -- apt-get install -y \
 	apache2 libapache2-mod-php \
 	php php-apcu php-cli php-curl php-fpm php-intl php-mbstring php-mysql php-xml \
-	imagemagick wget zip unzip pwgen \
+	ghostscript imagemagick poppler-utils \
+	wget zip unzip pwgen \
 	mariadb-server
 mysql_secure_installation
 echo
