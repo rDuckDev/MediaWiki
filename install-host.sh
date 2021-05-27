@@ -10,7 +10,7 @@ debconf-apt-progress -- apt-get install -y \
 	apache2 libapache2-mod-php \
 	php php-apcu php-cli php-curl php-intl php-mbstring php-mysql php-xml \
 	imagemagick wget zip unzip git nodejs npm pwgen \
-	mysql-server
+	mariadb-server
 mysql_secure_installation
 echo
 
