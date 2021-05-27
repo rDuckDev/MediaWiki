@@ -62,7 +62,9 @@ A collection of resources that help to install MediaWiki as a knowledge manageme
     ```
   * Upload LocalSettings.php to /var/www/html/WikiName
 
-## Update.sh
+## Update
+
+### MediaWiki
 
 * Update MediaWiki-KMS:
   * `wget https://github.com/rDuckDev/MediaWiki-KMS/raw/master/update.sh`
