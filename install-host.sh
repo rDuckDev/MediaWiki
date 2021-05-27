@@ -7,7 +7,7 @@ echo -e "- Installing LAMP stack"
 echo
 
 debconf-apt-progress -- apt-get install -y \
-	apache2 libapache2-mod-php \
+	apache2 libapache2-mod-php libapache2-mod-fcgid \
 	php php-apcu php-cli php-curl php-fpm php-intl php-mbstring php-mysql php-xml \
 	ghostscript imagemagick poppler-utils \
 	wget zip unzip pwgen \
