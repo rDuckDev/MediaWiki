@@ -18,12 +18,6 @@ mv mediawiki-1.35.2 $WIKI_NAME
 echo -e "${BLU}Installing MediaWiki extensions${NoC}"
 read -p "Press any key to continue..." -n 1 -r
 echo
-# VisualEditor https://www.mediawiki.org/wiki/Extension:VisualEditor
-echo -e "${BLU}VisualEditor${NoC}"
-cd /var/www/html/$WIKI_NAME/extensions
-git clone https://github.com/wikimedia/mediawiki-extensions-VisualEditor.git --branch REL1_31 --depth 1 VisualEditor
-cd VisualEditor
-git submodule update --init
 # RevisionSlider https://www.mediawiki.org/wiki/Extension:RevisionSlider
 echo -e "${BLU}RevisionSlider${NoC}"
 cd /var/www/html/$WIKI_NAME/extensions
