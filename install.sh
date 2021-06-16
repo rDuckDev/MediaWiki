@@ -57,33 +57,12 @@ do
   fi
 done
 
-echo -e "${BLU}Installing Parsoid${NoC}"
-read -p "Press any key to continue..." -n 1 -r
-echo
-cd /usr/lib/
-git clone https://github.com/wikimedia/parsoid.git --branch v0.9.0 --depth 1 parsoid
-cd parsoid
-npm install
-cp config.example.yaml config.yaml
-echo -e "${BLU}Opening Parsoid configuration for editing${NoC}"
-vi config.yaml
-
-echo -e "${BLU}Registering the Parsoid service${NoC}"
-cd /etc/systemd/system
-wget https://github.com/rDuckDev/MediaWiki-on-Ubuntu/raw/master/parsoid.service
-chmod 644 parsoid.service
-chown root:root parsoid.service
-systemctl daemon-reload
-systemctl enable parsoid
-systemctl start parsoid
-
 # print config options
 LOGFILE="/var/www/html/README"
 IP_ADDR=`ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/'`
 
 echo `date` > $LOGFILE
 echo " " >> $LOGFILE
-echo "Parsoid configuration: /usr/lib/parsoid/config.yaml" >> $LOGFILE
 echo "MediaWiki API: http://$IP_ADDR/$WIKI_NAME/api.php" >> $LOGFILE
 echo " " >> $LOGFILE
 echo "Open your browser to http://$IP_ADDR/$WIKI_NAME to configure MediaWiki" >> $LOGFILE
