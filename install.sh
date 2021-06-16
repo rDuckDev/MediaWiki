@@ -21,10 +21,9 @@ echo
 # RevisionSlider https://www.mediawiki.org/wiki/Extension:RevisionSlider
 echo -e "${BLU}RevisionSlider${NoC}"
 cd /var/www/html/$WIKI_NAME/extensions
-git clone https://github.com/wikimedia/mediawiki-extensions-RevisionSlider.git --branch REL1_31 --depth 1 RevisionSlider
-cd RevisionSlider
-composer install --no-dev ## TODO: fix broken dependency
-npm install
+wget https://extdist.wmflabs.org/dist/extensions/RevisionSlider-REL1_35-d1a6af2.tar.gz
+tar -xvzf RevisionSlider-REL1_35-d1a6af2.tar.gz
+rm RevisionSlider-REL1_35-d1a6af2.tar.gz
 
 echo -e "${BLU}Fixing file permissions${NoC}"
 read -p "Press any key to continue..." -n 1 -r
