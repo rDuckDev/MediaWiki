@@ -35,21 +35,21 @@ chown -R www-data:www-data /var/www/html/$WIKI_NAME/images
 find /var/www/html/$WIKI_NAME -type d -exec chmod 750 {} \;
 find /var/www/html/$WIKI_NAME -type f -exec chmod 640 {} \;
 
-echo -e "${BLU}Creating MySQL database for MediaWiki${NoC}"
+echo -e "${BLU}Creating MariaDB database for MediaWiki${NoC}"
 SYSOPPASS=`pwgen -syncB1 12`
 USERPASS=`pwgen -syncB1 8`
 while true
 do
-  read -s -p "MySQL password for user root: " MySQL_ROOT
+  read -s -p "MariaDB password for user root: " MariaDB_ROOT
   echo
   read -s -p "Confirm password for user root: " CONFIRM
   echo
 
-  if [ "$CONFIRM" = "$MySQL_ROOT" ]
+  if [ "$CONFIRM" = "$MariaDB_ROOT" ]
   then
-      mysql -u root -p$MySQL_ROOT -e "CREATE DATABASE $WIKI_NAME;"
-      mysql -u root -p$MySQL_ROOT -e "GRANT ALL PRIVILEGES ON $WIKI_NAME.* TO 'wiki-sysop'@localhost IDENTIFIED BY '$SYSOPPASS';"
-      mysql -u root -p$MySQL_ROOT -e "GRANT SELECT, INSERT, UPDATE, DELETE ON $WIKI_NAME.* TO 'wiki'@localhost IDENTIFIED BY '$USERPASS';"
+      mariadb -u root -p$MariaDB_ROOT -e "CREATE DATABASE $WIKI_NAME;"
+      mariadb -u root -p$MariaDB_ROOT -e "GRANT ALL PRIVILEGES ON $WIKI_NAME.* TO 'wiki-sysop'@localhost IDENTIFIED BY '$SYSOPPASS';"
+      mariadb -u root -p$MariaDB_ROOT -e "GRANT SELECT, INSERT, UPDATE, DELETE ON $WIKI_NAME.* TO 'wiki'@localhost IDENTIFIED BY '$USERPASS';"
 
       break
   else
