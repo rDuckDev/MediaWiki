@@ -10,10 +10,10 @@ echo -e "${BLU}Installing MediaWiki${NoC}"
 read -p "Enter the name of your wiki: " WIKI_NAME
 echo
 cd /var/www/html/
-wget https://releases.wikimedia.org/mediawiki/1.31/mediawiki-1.31.0.tar.gz
-tar -xvzf mediawiki-1.31.0.tar.gz
-rm mediawiki-1.31.0.tar.gz
-mv mediawiki-1.31.0 $WIKI_NAME
+wget https://releases.wikimedia.org/mediawiki/1.35/mediawiki-1.35.2.tar.gz
+tar -xvzf mediawiki-1.35.2.tar.gz
+rm mediawiki-1.35.2.tar.gz
+mv mediawiki-1.35.2 $WIKI_NAME
 
 echo -e "${BLU}Installing MediaWiki extensions${NoC}"
 read -p "Press any key to continue..." -n 1 -r
