@@ -36,7 +36,6 @@ A collection of resources that help to install MediaWiki as a knowledge manageme
 * Install MediaWiki on Ubuntu:
   * `wget https://github.com/rDuckDev/MediaWiki-KMS/raw/master/install.sh`
   * `sudo bash install.sh`
-  * Note: Parsoid defaults to port 8000, but 8142 is recommended on Ubuntu / Debian
 * Configure MediaWiki using your browser
   * Download LocalSettings.php and add (or update) the following lines:
     ```php
