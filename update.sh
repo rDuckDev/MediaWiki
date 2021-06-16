@@ -21,17 +21,17 @@ echo >> LocalSettings.php # make sure $wgReadOnly is on a new line
 echo '$wgReadOnly = "This wiki is currently being upgraded to a newer software version.";' >> LocalSettings.php
 echo
 
-echo -e "${BLU}Backing up MySQL database${NoC}"
+echo -e "${BLU}Backing up MariaDB database${NoC}"
 while true
 do
-	read -s -p "MySQL password for user root: " MySQL_ROOT
+	read -s -p "MariaDB password for user root: " MariaDB_ROOT
 	echo
 	read -s -p "Confirm password for user root: " CONFIRM
 	echo
 
-	if [ "$CONFIRM" = "$MySQL_ROOT" ]
+	if [ "$CONFIRM" = "$MariaDB_ROOT" ]
 	then
-		mysqldump --user=root --password=$MySQL_ROOT $WIKI_NAME > /var/www/html/$WIKI_NAME.sql
+		mysqldump --user=root --password=$MariaDB_ROOT $WIKI_NAME > /var/www/html/$WIKI_NAME.sql
 
 		break
 	else
@@ -39,44 +39,22 @@ do
 	fi
 done
 
-echo -e "${BLU}Upgrading Parsoid${NoC}"
-service parsoid stop
-cd /usr/lib/
-cp ./parsoid/localsettings.js /tmp/localsettings.js.bak
-rm -rf parsoid
-git clone https://github.com/wikimedia/parsoid.git --branch v0.9.0 --depth 1 parsoid
-cd parsoid
-npm install
-cp config.example.yaml config.yaml
-mv /tmp/localsettings.js.bak ./localsettings.js.old
-echo -e "${BLU}Opening the new Parsoid configuration for editing${NoC}"
-echo -e "${ORG}The previous settings are saved in /usr/lib/parsoid/localsettings.js.bak${NoC}"
-read -p "Press any key to continue..." -n 1 -r
-echo
-vi config.yaml
-service parsoid start
-
-echo -e "${BLU}Downloading MediaWiki${NoC}"
+echo -e "${BLU}Installing MediaWiki${NoC}"
 cd /var/www/html/
-wget https://releases.wikimedia.org/mediawiki/1.31/mediawiki-1.31.0.tar.gz
-tar -xvzf mediawiki-1.31.0.tar.gz
-rm mediawiki-1.31.0.tar.gz
-mv mediawiki-1.31.0 new_$WIKI_NAME
+wget https://releases.wikimedia.org/mediawiki/1.35/mediawiki-1.35.2.tar.gz
+tar -xvzf mediawiki-1.35.2.tar.gz
+rm mediawiki-1.35.2.tar.gz
+mv mediawiki-1.35.2 new_$WIKI_NAME
 
 echo -e "${BLU}Installing MediaWiki extensions${NoC}"
-# VisualEditor https://www.mediawiki.org/wiki/Extension:VisualEditor
-echo -e "${BLU}VisualEditor${NoC}"
-cd /var/www/html/new_$WIKI_NAME/extensions
-git clone https://github.com/wikimedia/mediawiki-extensions-VisualEditor.git --branch REL1_31 --depth 1 VisualEditor
-cd VisualEditor
-git submodule update --init
+read -p "Press any key to continue..." -n 1 -r
+echo
 # RevisionSlider https://www.mediawiki.org/wiki/Extension:RevisionSlider
 echo -e "${BLU}RevisionSlider${NoC}"
 cd /var/www/html/new_$WIKI_NAME/extensions
-git clone https://github.com/wikimedia/mediawiki-extensions-RevisionSlider.git --branch REL1_31 --depth 1 RevisionSlider
-cd RevisionSlider
-composer install --no-dev ## TODO: fix broken dependency
-npm install
+wget https://extdist.wmflabs.org/dist/extensions/RevisionSlider-REL1_35-d1a6af2.tar.gz
+tar -xvzf RevisionSlider-REL1_35-d1a6af2.tar.gz
+rm RevisionSlider-REL1_35-d1a6af2.tar.gz
 
 echo -e "${BLU}Checking for persistent files${NoC}"
 cd /var/www/html
