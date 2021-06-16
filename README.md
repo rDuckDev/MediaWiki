@@ -2,6 +2,10 @@
 
 A collection of resources that help to install MediaWiki as a knowledge management system (KMS).
 
+**:warning: This project was deprecated on 06/15/2021! :warning:**
+
+I created the MediaWiki KMS project to help install Parsoid when it ran under NodeJS. At that time, the installation instructions felt incomplete and the dependencies felt difficult to reason about. Now that Parsoid (the PHP version) ships with MediaWiki, the remainder of my scripts are a rehash of the official Ubuntu, MediaWiki, MediaWiki extensions, and Webmin documentation. Therefore, I deprecated this project in favor of the official documentation for each respective project.
+
 ## Versions
 
 * [Ubuntu Server 20.04 LTS](https://ubuntu.com/download/server)
