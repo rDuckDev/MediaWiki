@@ -58,7 +58,6 @@ A collection of resources that help to install MediaWiki as a knowledge manageme
         "User" => true,
         "Help" => true
     ];
-    $wgVirtualRestConfig['modules']['parsoid']['url'] = "http://ParsoidURL:8142";
     ```
   * Upload LocalSettings.php to /var/www/html/WikiName
 
